@@ -1,3 +1,5 @@
+#ItemDatabase.py
+
 class Item:
     def __init__(self, name, description, rarity):
         self.name = name
@@ -25,8 +27,47 @@ rarity_scales = {
 }
 
 # Defining the items for each class
-# Reusing the warrior, mage, and ranger equipment from earlier
-# ...
+# Warrior Equipment
+warrior_weapons = [
+    Weapon("Longsword", "A sturdy and reliable sword.", "Common", 10 * rarity_scales["Common"], ["Warrior"]),
+    Weapon("Battle Axe", "A heavy axe capable of dealing massive damage.", "Uncommon", 12 * rarity_scales["Uncommon"], ["Warrior"]),
+    Weapon("Warhammer", "A large hammer used for crushing blows.", "Rare", 15 * rarity_scales["Rare"], ["Warrior"]),
+    Weapon("Excalibur", "The legendary sword of a once-great king.", "Epic", 20 * rarity_scales["Epic"], ["Warrior"])
+]
+warrior_armor = [
+    Armor("Chainmail", "A suit of interlocking metal rings.", "Common", 5 * rarity_scales["Common"], ["Warrior"]),
+    Armor("Plate Armor", "Heavy armor offering superior protection.", "Uncommon", 7 * rarity_scales["Uncommon"], ["Warrior"]),
+    Armor("Dragon Scale Armor", "Armor forged from the scales of a dragon.", "Rare", 10 * rarity_scales["Rare"], ["Warrior"]),
+    Armor("Armor of the Ancients", "Ancient armor said to be imbued with magical properties.", "Epic", 15 * rarity_scales["Epic"], ["Warrior"])
+]
+
+# Mage Equipment
+mage_weapons = [
+    Weapon("Staff of Illumination", "A staff that glows with an inner light.", "Common", 8 * rarity_scales["Common"], ["Mage"]),
+    Weapon("Crystal Wand", "A wand made from pure crystal.", "Uncommon", 11 * rarity_scales["Uncommon"], ["Mage"]),
+    Weapon("Orb of Power", "A mysterious orb that channels arcane energy.", "Rare", 14 * rarity_scales["Rare"], ["Mage"]),
+    Weapon("Staff of the Archmage", "The staff once wielded by the legendary Archmage.", "Epic", 18 * rarity_scales["Epic"], ["Mage"])
+]
+mage_armor = [
+    Armor("Robes of Insight", "Simple robes that enhance magical ability.", "Common", 3 * rarity_scales["Common"], ["Mage"]),
+    Armor("Enchanted Cloak", "A cloak that protects against minor spells.", "Uncommon", 5 * rarity_scales["Uncommon"], ["Mage"]),
+    Armor("Arcanist's Robe", "Robes that offer protection from magical attacks.", "Rare", 8 * rarity_scales["Rare"], ["Mage"]),
+    Armor("Robes of the High Sorcerer", "Robes worn by the most powerful sorcerers.", "Epic", 12 * rarity_scales["Epic"], ["Mage"])
+]
+
+# Ranger Equipment
+ranger_weapons = [
+    Weapon("Short Bow", "A light, easy-to-use bow.", "Common", 9 * rarity_scales["Common"], ["Ranger"]),
+    Weapon("Longbow", "A bow with great range and power.", "Uncommon", 11 * rarity_scales["Uncommon"], ["Ranger"]),
+    Weapon("Crossbow", "A powerful bow that can pierce armor.", "Rare", 13 * rarity_scales["Rare"], ["Ranger"]),
+    Weapon("Bow of the Forest Guardian", "A mystical bow said to be blessed by the forest spirits.", "Epic", 17 * rarity_scales["Epic"], ["Ranger"])
+]
+ranger_armor = [
+    Armor("Leather Armor", "Flexible armor that does not hinder movement.", "Common", 4 * rarity_scales["Common"], ["Ranger"]),
+    Armor("Camouflage Cloak", "A cloak that helps blend in with natural surroundings.", "Uncommon", 6 * rarity_scales["Uncommon"], ["Ranger"]),
+    Armor("Elven Chainmail", "Lightweight chainmail made by elven smiths.", "Rare", 8 * rarity_scales["Rare"], ["Ranger"]),
+    Armor("Armor of the Wild", "Magical armor that grants the wearer the agility of forest creatures.", "Epic", 11 * rarity_scales["Epic"], ["Ranger"])
+]
 
 # Rogue Equipment
 rogue_weapons = [
@@ -98,7 +139,6 @@ bard_armor = [
     Armor("Maestro's Attire", "Elegantly crafted armor fit for a bardic legend.", "Epic", 12 * rarity_scales["Epic"], ["Bard"])
 ]
 
-# Adding other classes if needed
 
 # Item Database
 item_database = {
@@ -134,8 +174,6 @@ item_database = {
         "weapons": bard_weapons,
         "armor": bard_armor
     },
-    # Add other classes
-    # ...
 }
 
 # Example of accessing items
@@ -196,8 +234,4 @@ randomItems = [
 # Function to generate a random item
 def generateRandomItem():
     return random.choice(randomItems)
-
-# Example usage
-randomItem = generateRandomItem()
-print(f"You found: {randomItem}")
 

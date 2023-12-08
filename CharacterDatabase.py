@@ -1,4 +1,4 @@
-#PlayerCharacter.py
+#CharacterDatabaseINCOMP.py
 
 class Character:
     def __init__(self, name, race, charClass, level, abilities, equipment, background, maxHp, attack):

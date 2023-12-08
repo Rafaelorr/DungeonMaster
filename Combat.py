@@ -1,4 +1,6 @@
-# CombatSystem.py
+# Combat.py
+
+
 import random
 
 def roll_dice(sides=6):
@@ -38,10 +40,3 @@ def combat_round(player, enemy):
     if player['hp'] <= 0:
         print(f"{player['name']} has been defeated! Loading from last save...")
         load_game()  # Implement the load_game function
-
-# Example usage
-player_character = {'name': 'Hero', 'attack': 10, 'defense': 8, 'hp': 50, 'level': 1, 'experience': 0}
-enemy = {'name': 'Goblin', 'attack': 6, 'defense': 4, 'hp': 30, 'experience_value': 20}
-
-# Simulate a combat round
-combat_round(player_character, enemy)

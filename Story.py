@@ -23,12 +23,3 @@ class StoryNode:
         else:
             print("Invalid choice.")
             return None
-
-# Sample story structure with combat
-def loadStory():
-    finalBattle = StoryNode("You face the dragon. The final battle begins!", combat=True)
-    dragonLair = StoryNode("You reach the dragon's lair.", [{"text": "Fight the dragon", "node": finalBattle}])
-    mysticForest = StoryNode("You are in the Mystic Forest.", [{"text": "Go to the lair", "node": dragonLair}])
-    startingVillage = StoryNode("Your journey begins in a small village.", [{"text": "Enter the forest", "node": mysticForest}])
-
-    return startingVillage

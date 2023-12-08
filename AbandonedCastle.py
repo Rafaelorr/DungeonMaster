@@ -1,65 +1,76 @@
-class StoryNode:
-    def __init__(self, description):
-        self.description = description
-        self.choices = {}
+# AbandonedCastle.py
 
-    def add_choice(self, description, node):
-        self.choices[description] = node
+from Combat import combat_round
+from Inventory import Inventory
+from skills import *
+import random
 
-    def is_terminal(self):
-        return len(self.choices) == 0
+def abandoned_castle_adventure(player_character, player_inventory):
+    print("\nYour adventure takes you to the Abandoned Castle, once a mighty fortress now left to ruins and shrouded in mystery.")
 
-    def __str__(self):
-        return self.description
-
-def exploreHauntedHall():
-    def investigatePortrait():
-        return StoryNode("The portrait reveals a hidden switch, opening a secret passage leading to the castle's treasury.")
-
-    def proceedCautiously():
-        return StoryNode("You proceed cautiously, avoiding traps and finding a map showing a secret exit from the castle.")
-
-    node = StoryNode("In the haunted hall, a ghostly portrait catches your eye. There is an eerie presence.")
-    node.add_choice("Investigate the portrait", investigatePortrait())
-    node.add_choice("Proceed cautiously through the hall", proceedCautiously())
-    return node
-
-def encounterGuardian():
-    def fightGuardian():
-        return StoryNode("After a tough battle, you defeat the guardian, gaining access to the ancient archives of the castle.")
-
-    def bargainWithGuardian():
-        return StoryNode("You bargain with the guardian, offering a trinket in exchange for safe passage to the castle's library.")
-
-    node = StoryNode("A spectral guardian blocks your path, demanding you prove your worth or offer a tribute.")
-    node.add_choice("Fight the guardian", fightGuardian())
-    node.add_choice("Bargain with the guardian", bargainWithGuardian())
-    return node
-
-def chooseCastlePath():
-    def leftWing():
-        return exploreHauntedHall()
-
-    def rightWing():
-        return encounterGuardian()
-
-    node = StoryNode("You're at the entrance of the abandoned castle. The left wing seems haunted, while the right wing is guarded.")
-    node.add_choice("Explore the left wing", leftWing())
-    node.add_choice("Head towards the right wing", rightWing())
-    return node
-
-# Starting Point in Abandoned Castle
-abandonedCastleStart = chooseCastlePath()
-
-# Example Usage
-current_node = abandonedCastleStart
-while not current_node.is_terminal():
-    print(current_node)
-    for choice in current_node.choices:
-        print(f"- {choice}")
-    decision = input("What do you choose to do? ")
-    if decision in current_node.choices:
-        current_node = current_node.choices[decision]
+    # Story point 1
+    print("\nIn the castle courtyard, you encounter a spectral knight.")
+    print("1. Engage the knight")
+    print("2. Try to communicate peacefully")
+    choice = input("Your choice: ")
+    if choice == '1':
+        print("The knight attacks! Prepare for combat.")
+        enemy = {"name": "Spectral Knight", "hp": 25, "attack": 6, "defense": 5, "experience_value": 40}
+        combat_round(player_character, enemy)
     else:
-        print("Invalid choice. Please choose again.")
-print(current_node)
+        print("The knight shares the tale of the castle and bestows a blessing upon you.")
+        # Apply blessing effect
+
+    # Story point 2
+    print("\nYou find a grand library filled with ancient books.")
+    print("1. Search the library for knowledge")
+    print("2. Take some valuable books and proceed")
+    choice = input("Your choice: ")
+    if choice == '1':
+        print("You gain insights into ancient magic and lore.")
+        # Apply knowledge effect
+    else:
+        print("You take some valuable books, which could be sold later.")
+        player_inventory.add_item('Ancient Books')
+
+    # Story point 3 - Puzzle interaction
+    print("\nYou discover a room with a complex puzzle locking a chest.")
+    # Puzzle logic goes here
+    if puzzle_solved:
+        print("Inside the chest, you find a legendary weapon.")
+        player_inventory.add_item('Legendary Weapon')
+    else:
+        print("Unable to solve the puzzle, you leave the room.")
+
+    # Story point 4
+    print("\nIn the throne room, you encounter a ghostly figure on the throne.")
+    print("1. Approach the figure")
+    print("2. Search the room for clues")
+    choice = input("Your choice: ")
+    if choice == '1':
+        print("The figure reveals itself as the former king and imparts wisdom.")
+        # Apply wisdom effect
+    else:
+        print("You find a hidden compartment with a royal signet ring.")
+        player_inventory.add_item('Royal Signet Ring')
+
+    # Story point 5
+    print("\nAtop the castle tower, you find a magical telescope.")
+    print("1. Gaze into the telescope")
+    print("2. Take the telescope with you")
+    choice = input("Your choice: ")
+    if choice == '1':
+        print("You see visions of distant lands and gain foresight.")
+        # Apply foresight effect
+    else:
+        print("You take the telescope, which might reveal secrets later on.")
+        player_inventory.add_item('Magical Telescope')
+
+    print("\nHaving explored the Abandoned Castle, you gather your findings and prepare for the next stage of your journey.")
+
+    # Transition to next area
+    next_area = 'dragons_lair'  # or any other area as per the storyline
+    return next_area
+
+# Example usage
+# abandoned_castle_adventure(player_character, player_inventory)

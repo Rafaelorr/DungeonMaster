@@ -1,65 +1,68 @@
-class StoryNode:
-    def __init__(self, description):
-        self.description = description
-        self.choices = {}
+# AncientRuins.py
 
-    def add_choice(self, description, node):
-        self.choices[description] = node
+from Combat import combat_round
+from Inventory import Inventory
+from skills import *
+import random
 
-    def is_terminal(self):
-        return len(self.choices) == 0
+def ancient_ruins_adventure(player_character, player_inventory):
+    print("\nAfter your encounters in the Mystical Caverns, your journey leads you to the Ancient Ruins, an area filled with historical secrets and forgotten lore.")
 
-    def __str__(self):
-        return self.description
-
-def exploreRuinedTemple():
-    def investigateAltar():
-        return StoryNode("You find an ancient artifact at the altar, radiating with mystical energy.")
-
-    def searchChambers():
-        return StoryNode("In the chambers, you discover hidden scrolls detailing lost magic spells.")
-
-    node = StoryNode("The temple, though in ruins, holds secrets waiting to be uncovered.")
-    node.add_choice("Investigate the altar", investigateAltar())
-    node.add_choice("Search the surrounding chambers", searchChambers())
-    return node
-
-def encounterGuardianSpirit():
-    def battle():
-        return StoryNode("After a tough battle, the spirit yields, granting you passage to a hidden treasure.")
-
-    def parley():
-        return StoryNode("The spirit, impressed by your respect, shares ancient knowledge and guides you safely through the ruins.")
-
-    node = StoryNode("A guardian spirit bars your way, emanating a powerful aura.")
-    node.add_choice("Engage the spirit in battle", battle())
-    node.add_choice("Attempt to parley with the spirit", parley())
-    return node
-
-def exploreAncientRuins():
-    def leftPath():
-        return exploreRuinedTemple()
-
-    def rightPath():
-        return encounterGuardianSpirit()
-
-    node = StoryNode("You enter the Ancient Ruins. The air is thick with the weight of history.")
-    node.add_choice("Go left towards a dilapidated temple", leftPath())
-    node.add_choice("Go right where a faint light glows", rightPath())
-    return node
-
-# Starting Point in Ancient Ruins
-ancientRuinsStart = exploreAncientRuins()
-
-# Example Usage
-current_node = ancientRuinsStart
-while not current_node.is_terminal():
-    print(current_node)
-    for choice in current_node.choices:
-        print(f"- {choice}")
-    decision = input("What do you choose to do? ")
-    if decision in current_node.choices:
-        current_node = current_node.choices[decision]
+    # Story point 1
+    print("\nAs you enter, you notice intricate carvings on the ruin walls.")
+    print("1. Examine the carvings closely")
+    print("2. Proceed carefully without disturbing anything")
+    choice = input("Your choice: ")
+    if choice == '1':
+        print("The carvings reveal the history of an ancient civilization and a hidden compartment opens up, revealing a magical scroll.")
+        player_inventory.add_item('Ancient Scroll')
+        print("Ancient Scroll added to your inventory.")
     else:
-        print("Invalid choice. Please choose again.")
-print(current_node)
+        print("You avoid the carvings, but stumble upon a hidden underground passage.")
+
+    # Story point 2
+    print("\nYou find a room with a mysterious, glowing orb.")
+    print("1. Touch the orb")
+    print("2. Observe from a distance")
+    choice = input("Your choice: ")
+    if choice == '1':
+        print("The orb grants you a vision of the past, revealing the location of a secret chamber.")
+    else:
+        print("Observing from a distance, you notice a pattern on the floor leading to a hidden doorway.")
+
+    # Story point 3 - Combat interaction
+    print("\nGuardians of the ruins awaken to challenge your presence!")
+    enemy = {"name": "Ancient Guardian", "hp": 25, "attack": 5, "defense": 4, "experience_value": 35}
+    combat_round(player_character, enemy)
+    print("After the battle, you find a rare artifact the guardians were protecting.")
+    player_inventory.add_item('Rare Artifact')
+
+    # Story point 4
+    print("\nYou come across a grand hall with statues of ancient heroes.")
+    print("1. Search the hall for clues")
+    print("2. Pay respects and move on")
+    choice = input("Your choice: ")
+    if choice == '1':
+        print("Your search reveals a hidden lever, opening a secret room filled with ancient weaponry.")
+    else:
+        print("You pay your respects. As you leave, a hidden compartment opens, revealing a hero's medallion.")
+        player_inventory.add_item('Hero\'s Medallion')
+
+    # Story point 5
+    print("\nIn the deepest part of the ruins, you find a sealed tomb.")
+    print("1. Attempt to open the tomb")
+    print("2. Leave the tomb undisturbed")
+    choice = input("Your choice: ")
+    if choice == '1':
+        print("The tomb opens, releasing an ancient spirit who grants you a powerful blessing.")
+    else:
+        print("You choose to leave the tomb undisturbed, respecting the rest of those long gone.")
+
+    print("\nHaving explored the Ancient Ruins, you gather your findings and prepare for the next stage of your journey.")
+
+    # Transition to next area
+    next_area = 'dragons_lair'  # or any other area as per the storyline
+    return next_area
+
+# Example usage
+# ancient_ruins_adventure(player_character, player_inventory)

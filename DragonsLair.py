@@ -1,65 +1,75 @@
-class StoryNode:
-    def __init__(self, description):
-        self.description = description
-        self.choices = {}
+# DragonsLair.py
 
-    def add_choice(self, description, node):
-        self.choices[description] = node
+from Combat import combat_round
+from Inventory import Inventory
+from skills import *
+import random
 
-    def is_terminal(self):
-        return len(self.choices) == 0
+def dragons_lair_adventure(player_character, player_inventory):
+    print("\nYou arrive at the foreboding entrance of the Dragon's Lair. A sense of dread and excitement fills the air.")
 
-    def __str__(self):
-        return self.description
-
-def approachDragon():
-    def fightDragon():
-        return StoryNode("An epic battle ensues. After a fierce struggle, you emerge victorious, the dragon defeated.")
-
-    def negotiateWithDragon():
-        return StoryNode("You engage in a tense negotiation. Surprisingly, the dragon agrees to a truce, offering you a portion of its treasure.")
-
-    node = StoryNode("You find the dragon asleep, surrounded by mountains of treasure.")
-    node.add_choice("Fight the dragon", fightDragon())
-    node.add_choice("Attempt to negotiate with the dragon", negotiateWithDragon())
-    return node
-
-def exploreLair():
-    def searchTreasure():
-        return StoryNode("Among the treasure, you find a legendary weapon that will aid you in future battles.")
-
-    def findSecretExit():
-        return StoryNode("You discover a secret exit that leads to a hidden part of the dungeon.")
-
-    node = StoryNode("The lair is filled with riches beyond imagination and several hidden pathways.")
-    node.add_choice("Search through the treasure", searchTreasure())
-    node.add_choice("Look for a secret exit", findSecretExit())
-    return node
-
-def enterDragonsLair():
-    def leftPath():
-        return approachDragon()
-
-    def rightPath():
-        return exploreLair()
-
-    node = StoryNode("You stand at the entrance of the Dragon's Lair, the air thick with danger and opportunity.")
-    node.add_choice("Approach the sleeping dragon", leftPath())
-    node.add_choice("Explore the rest of the lair", rightPath())
-    return node
-
-# Starting Point in Dragon's Lair
-dragonsLairStart = enterDragonsLair()
-
-# Example Usage
-current_node = dragonsLairStart
-while not current_node.is_terminal():
-    print(current_node)
-    for choice in current_node.choices:
-        print(f"- {choice}")
-    decision = input("What do you choose to do? ")
-    if decision in current_node.choices:
-        current_node = current_node.choices[decision]
+    # Story point 1
+    print("\nAs you enter, you find the lair surprisingly illuminated with glowing crystals.")
+    print("1. Collect some crystals")
+    print("2. Proceed cautiously, ignoring the crystals")
+    choice = input("Your choice: ")
+    if choice == '1':
+        print("You collect glowing crystals, which may have magical properties.")
+        player_inventory.add_item('Glowing Crystals')
     else:
-        print("Invalid choice. Please choose again.")
-print(current_node)
+        print("You decide not to disturb the crystals and continue onward.")
+
+    # Story point 2
+    print("\nYou come across an injured adventurer who warns you about the dragon.")
+    print("1. Help the adventurer")
+    print("2. Ask for information about the dragon")
+    choice = input("Your choice: ")
+    if choice == '1':
+        print("After helping the adventurer, they share a secret passage that leads closer to the dragon.")
+        # Secret passage logic
+    else:
+        print("The adventurer shares valuable information about the dragon's weaknesses.")
+
+    # Story point 3 - Choice with consequences
+    print("\nYou find a chamber filled with treasure.")
+    print("1. Take some treasure")
+    print("2. Leave the treasure undisturbed")
+    choice = input("Your choice: ")
+    if choice == '1':
+        print("You collect some treasure, but it triggers a trap!")
+        # Trigger trap effect
+    else:
+        print("You decide not to risk taking any treasure and proceed safely.")
+
+    # Story point 4
+    print("\nYou finally come face-to-face with the dragon.")
+    print("1. Engage the dragon in battle")
+    print("2. Attempt to communicate with the dragon")
+    choice = input("Your choice: ")
+    if choice == '1':
+        print("You brace yourself for an epic battle with the dragon.")
+        enemy = {"name": "Dragon", "hp": 100, "attack": 10, "defense": 8, "experience_value": 200}
+        combat_round(player_character, enemy)
+    else:
+        print("You attempt to communicate with the dragon, discovering it is wise and ancient.")
+        # Dragon communication logic
+
+    # Story point 5 - Climactic ending
+    print("\nAfter your encounter with the dragon, you must decide your next move.")
+    print("1. Leave the lair and continue your adventure")
+    print("2. Stay in the lair to uncover more secrets")
+    choice = input("Your choice: ")
+    if choice == '1':
+        print("You leave the lair, richer in wealth and experience, ready for your next adventure.")
+        # Transition to next adventure
+    else:
+        print("You choose to explore the lair further, uncovering hidden chambers and ancient lore.")
+
+    print("\nThe Dragon's Lair adventure concludes, but your journey is far from over.")
+
+    # Transition to next area or end of the game
+    next_area = 'game_end'  # or any other area as per the storyline
+    return next_area
+
+# Example usage
+# dragons_lair_adventure(player_character, player_inventory)

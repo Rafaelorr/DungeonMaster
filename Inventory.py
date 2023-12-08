@@ -1,3 +1,6 @@
+#Inventory.py
+
+
 class Inventory:
     def __init__(self):
         self.items = {}
@@ -44,18 +47,3 @@ class Inventory:
             inventory_str += f"{item_name} x{item_info['quantity']}\n"
         return inventory_str
 
-# Example usage in the game loop
-player_inventory = Inventory()
-
-# Example of adding an item to the inventory
-player_inventory.add_item(item_database["Rogue"]["weapons"][0])  # Adds a Dagger
-
-# Assuming 'player_character' is the instance of the Character class
-# Example of using an item
-print(player_inventory.use_item("Health Potion", player_character))
-
-# Example of equipping an item
-print(player_inventory.equip_item("Dagger", player_character))
-
-# Displaying the inventory
-print(player_inventory)
