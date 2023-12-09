@@ -26,18 +26,18 @@ def dragons_lair_adventure(player_character, player_inventory):
     choice = input("Your choice: ")
     if choice == '1':
         print("After helping the adventurer, they share a secret passage that leads closer to the dragon.")
-        # Secret passage logic
+        # Add logic to skip some story portion
     else:
         print("The adventurer shares valuable information about the dragon's weaknesses.")
 
-    # Story point 3 - Choice with consequences
+    # Story point 3
     print("\nYou find a chamber filled with treasure.")
     print("1. Take some treasure")
     print("2. Leave the treasure undisturbed")
     choice = input("Your choice: ")
     if choice == '1':
         print("You collect some treasure, but it triggers a trap!")
-        # Trigger trap effect
+        # Add logic to take damage UNFIN
     else:
         print("You decide not to risk taking any treasure and proceed safely.")
 
@@ -52,24 +52,20 @@ def dragons_lair_adventure(player_character, player_inventory):
         combat_round(player_character, enemy)
     else:
         print("You attempt to communicate with the dragon, discovering it is wise and ancient.")
-        # Dragon communication logic
+        # Add logic for intel check UNFIN
 
-    # Story point 5 - Climactic ending
+    # Story point 5
     print("\nAfter your encounter with the dragon, you must decide your next move.")
     print("1. Leave the lair and continue your adventure")
     print("2. Stay in the lair to uncover more secrets")
     choice = input("Your choice: ")
     if choice == '1':
         print("You leave the lair, richer in wealth and experience, ready for your next adventure.")
-        # Transition to next adventure
+
     else:
         print("You choose to explore the lair further, uncovering hidden chambers and ancient lore.")
 
-    print("\nThe Dragon's Lair adventure concludes, but your journey is far from over.")
+    print("\nThe Dragon's Lair adventure concludes.")
 
-    # Transition to next area or end of the game
-    next_area = 'game_end'  # or any other area as per the storyline
+    next_area = 'game_end'
     return next_area
-
-# Example usage
-# dragons_lair_adventure(player_character, player_inventory)

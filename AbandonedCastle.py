@@ -19,7 +19,7 @@ def abandoned_castle_adventure(player_character, player_inventory):
         combat_round(player_character, enemy)
     else:
         print("The knight shares the tale of the castle and bestows a blessing upon you.")
-        # Apply blessing effect
+        # Add logic for a stat increase UNFIN
 
     # Story point 2
     print("\nYou find a grand library filled with ancient books.")
@@ -28,14 +28,14 @@ def abandoned_castle_adventure(player_character, player_inventory):
     choice = input("Your choice: ")
     if choice == '1':
         print("You gain insights into ancient magic and lore.")
-        # Apply knowledge effect
+        # Add logic for a stat increase
     else:
         print("You take some valuable books, which could be sold later.")
         player_inventory.add_item('Ancient Books')
 
     # Story point 3 - Puzzle interaction
     print("\nYou discover a room with a complex puzzle locking a chest.")
-    # Puzzle logic goes here
+    # Add logic for puzzle mini-game UNFIN
     if puzzle_solved:
         print("Inside the chest, you find a legendary weapon.")
         player_inventory.add_item('Legendary Weapon')
@@ -49,7 +49,6 @@ def abandoned_castle_adventure(player_character, player_inventory):
     choice = input("Your choice: ")
     if choice == '1':
         print("The figure reveals itself as the former king and imparts wisdom.")
-        # Apply wisdom effect
     else:
         print("You find a hidden compartment with a royal signet ring.")
         player_inventory.add_item('Royal Signet Ring')
@@ -61,16 +60,12 @@ def abandoned_castle_adventure(player_character, player_inventory):
     choice = input("Your choice: ")
     if choice == '1':
         print("You see visions of distant lands and gain foresight.")
-        # Apply foresight effect
     else:
         print("You take the telescope, which might reveal secrets later on.")
         player_inventory.add_item('Magical Telescope')
 
     print("\nHaving explored the Abandoned Castle, you gather your findings and prepare for the next stage of your journey.")
 
-    # Transition to next area
-    next_area = 'dragons_lair'  # or any other area as per the storyline
+    next_area = 'dragons_lair'
     return next_area
 
-# Example usage
-# abandoned_castle_adventure(player_character, player_inventory)

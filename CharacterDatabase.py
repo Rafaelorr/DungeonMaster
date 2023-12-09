@@ -1,4 +1,4 @@
-#CharacterDatabaseINCOMP.py
+#CharacterDatabase.py
 
 class Character:
     def __init__(self, name, race, charClass, level, abilities, equipment, background, maxHp, attack):
@@ -6,7 +6,7 @@ class Character:
         self.race = race
         self.charClass = charClass
         self.level = level
-        self.abilities = abilities  # Abilities are stored here
+        self.abilities = abilities
         self.equipment = equipment
         self.background = background
         self.maxHp = maxHp

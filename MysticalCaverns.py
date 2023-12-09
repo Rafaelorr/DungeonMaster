@@ -46,7 +46,7 @@ def mystical_caverns_adventure(player_character, player_inventory):
     choice = input("Your choice: ")
     if choice == '1':
         print("The artifact grants you enhanced magical powers.")
-        # Enhance player's skills or stats
+        # Add logic for increasing player stats UNFINISHED
     else:
         print("You respect the sanctity of the altar and leave the artifact.")
 
@@ -62,9 +62,5 @@ def mystical_caverns_adventure(player_character, player_inventory):
 
     print("\nHaving explored the Mystical Caverns, you prepare to journey to the next destination.")
 
-    # Transition to next area
-    next_area = 'ancient_ruins'  # or any other area as per the storyline
+    next_area = 'ancient_ruins'
     return next_area
-
-# Example usage
-# mystical_caverns_adventure(player_character, player_inventory)

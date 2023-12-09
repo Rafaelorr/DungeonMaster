@@ -1,6 +1,5 @@
 #MainGame.py
 
-# Importing necessary modules
 from Intro import intro_and_character_choice
 from Inventory import Inventory
 from EnchantedVillage import enchanted_village_adventure
@@ -10,7 +9,6 @@ from AbandonedCastle import abandoned_castle_adventure
 from ForestOfShadows import forest_of_shadows_adventure
 from DragonsLair import dragons_lair_adventure
 
-# Function to start the game
 def start_game():
     print("Welcome to Dragon's Demise Adventure Game!")
     player_character = intro_and_character_choice()
@@ -19,10 +17,8 @@ def start_game():
         print("Game Over. Please restart to try again.")
         return
 
-    # Initialize the player's inventory
     player_inventory = Inventory()
 
-    # Main game loop
     current_area = 'enchanted_village'
     game_over = False
 
@@ -56,6 +52,5 @@ def start_game():
             print("Unknown territory lies ahead.")
             game_over = True
 
-# Starting the game
 if __name__ == "__main__":
     start_game()

@@ -7,10 +7,10 @@ def roll_dice(sides=6):
 
 def calculate_attack_damage(attack):
     damage = roll_dice() + attack
-    return max(damage, 0)  # Damage cannot be negative
+    return max(damage, 0)
 
 def gain_experience(player, experience):
-    #Implement XP system
+    #Implement XP system UNFIN
     pass
 
 def combat_round(player, enemy):
@@ -29,6 +29,5 @@ def combat_round(player, enemy):
 
     if player.currentHp <= 0:
         print("Game Over.")
-        #print(f"{player.name} has been defeated! Loading from last save...")
-        # Implement the load game function
+        # Implement the load game function UNFIN
 

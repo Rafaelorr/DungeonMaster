@@ -2,7 +2,6 @@
 
 from CharacterDatabase import Database, Character
 
-# Initialize the database
 db = Database()
 
 def select_option(options, prompt):
@@ -91,5 +90,3 @@ def intro_and_character_choice():
     else:
         print("Invalid choice. The adventure ends before it began.")
         return None
-
-# If you have additional logic or functions from NewGameCharCreatorTransition.py that need to be included, add them below.

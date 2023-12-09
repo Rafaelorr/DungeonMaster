@@ -14,7 +14,6 @@ def enchanted_village_adventure(player_character, player_inventory):
     choice = input("Your choice: ")
     if choice == '1':
         print("Inside the tower, you find a magical artifact and a note about a curse affecting the village.")
-        # Assuming a similar approach for adding 'Magical Artifact'
         magical_artifact = next((item for item in consumables if item.name == "Magical Artifact"), None)
         if magical_artifact:
             player_inventory.add_item(magical_artifact)
@@ -45,7 +44,6 @@ def enchanted_village_adventure(player_character, player_inventory):
     enemy = {"name": "Shadow Creature", "hp": 15, "attack": 3, "defense": 2, "experience_value": 20}
     combat_round(player_character, enemy)
     print("After the battle, you find a mysterious rune on one of the defeated creatures.")
-    # Assuming similar approach for adding 'Mysterious Rune'
     mysterious_rune = next((item for item in consumables if item.name == "Mysterious Rune"), None)
     if mysterious_rune:
         player_inventory.add_item(mysterious_rune)
@@ -60,7 +58,6 @@ def enchanted_village_adventure(player_character, player_inventory):
     choice = input("Your choice: ")
     if choice == '1':
         print("In the chamber, you find ancient scrolls detailing a forgotten ritual.")
-        # Assuming similar approach for adding 'Ancient Scrolls'
         ancient_scrolls = next((item for item in consumables if item.name == "Ancient Scrolls"), None)
         if ancient_scrolls:
             player_inventory.add_item(ancient_scrolls)
@@ -84,9 +81,5 @@ def enchanted_village_adventure(player_character, player_inventory):
 
     print("\nThe village is saved, and you are hailed as a hero. It's time to continue your journey.")
 
-    # Transition to next area
-    next_area = 'mystical_caverns'  # or any other area as per the storyline
+    next_area = 'mystical_caverns'
     return next_area
-
-# Example usage
-# enchanted_village_adventure(player_character, player_inventory)

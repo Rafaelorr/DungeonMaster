@@ -31,7 +31,7 @@ def forest_of_shadows_adventure(player_character, player_inventory):
         print("From a distance, you spot a hidden cache at the tree's base, containing a potion.")
         player_inventory.add_item('Elixir of Strength')
 
-    # Story point 3 - Combat interaction
+    # Story point
     print("\nShadow creatures emerge from the darkness to challenge you!")
     enemy = {"name": "Shadow Creature", "hp": 20, "attack": 4, "defense": 3, "experience_value": 30}
     combat_round(player_character, enemy)
@@ -45,7 +45,7 @@ def forest_of_shadows_adventure(player_character, player_inventory):
     choice = input("Your choice: ")
     if choice == '1':
         print("The water grants you a temporary boost in vitality.")
-        # Apply temporary health boost
+        # Add logic for temporary health boost UNFIN
     else:
         print("You collect some water in a vial, which might be useful later.")
         player_inventory.add_item('Vial of Enchanted Water')
@@ -63,9 +63,5 @@ def forest_of_shadows_adventure(player_character, player_inventory):
 
     print("\nHaving explored the Forest of Shadows, you gather your findings and prepare for the next stage of your journey.")
 
-    # Transition to next area
-    next_area = 'abandoned_castle'  # or any other area as per the storyline
+    next_area = 'abandoned_castle'
     return next_area
-
-# Example usage
-# forest_of_shadows_adventure(player_character, player_inventory)

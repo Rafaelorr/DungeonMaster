@@ -31,7 +31,7 @@ def ancient_ruins_adventure(player_character, player_inventory):
     else:
         print("Observing from a distance, you notice a pattern on the floor leading to a hidden doorway.")
 
-    # Story point 3 - Combat interaction
+    # Story point 3
     print("\nGuardians of the ruins awaken to challenge your presence!")
     enemy = {"name": "Ancient Guardian", "hp": 25, "attack": 5, "defense": 4, "experience_value": 35}
     combat_round(player_character, enemy)
@@ -61,9 +61,6 @@ def ancient_ruins_adventure(player_character, player_inventory):
 
     print("\nHaving explored the Ancient Ruins, you gather your findings and prepare for the next stage of your journey.")
 
-    # Transition to next area
-    next_area = 'dragons_lair'  # or any other area as per the storyline
+    next_area = 'dragons_lair'
     return next_area
 
-# Example usage
-# ancient_ruins_adventure(player_character, player_inventory)

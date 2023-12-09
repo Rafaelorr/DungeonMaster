@@ -27,6 +27,7 @@ rarity_scales = {
 }
 
 # Defining the items for each class
+
 # Warrior Equipment
 warrior_weapons = [
     Weapon("Longsword", "A sturdy and reliable sword.", "Common", 10 * rarity_scales["Common"], ["Warrior"]),
@@ -195,7 +196,7 @@ class Consumable(Item):
             character['mana'] += restored_amount
             return f"{character['name']} restored {restored_amount} Mana."
 
-# Consumables
+# List of Consumables
 consumables = [
     Consumable("Health Potion", "Restores 5 HP.", "Common", "Restore 5 HP"),
     Consumable("Greater Health Potion", "Restores 10 HP.", "Uncommon", "Restore 10 HP"),
