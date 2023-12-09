@@ -176,9 +176,6 @@ item_database = {
     },
 }
 
-# Example of accessing items
-print(item_database["Cleric"]["weapons"][0].name)  # Outputs: Mace
-
 
 class Consumable(Item):
     def __init__(self, name, description, rarity, effect):

@@ -4,6 +4,7 @@ from Combat import combat_round
 from Inventory import Inventory
 from skills import *
 import random
+from ItemDatabase import item_database, Consumable, Weapon, Armor, randomItems
 
 def ancient_ruins_adventure(player_character, player_inventory):
     print("\nAfter your encounters in the Mystical Caverns, your journey leads you to the Ancient Ruins, an area filled with historical secrets and forgotten lore.")

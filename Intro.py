@@ -1,4 +1,4 @@
-# Merged intro.py
+# Intro.py
 
 from CharacterDatabase import Database, Character
 
@@ -19,14 +19,38 @@ def select_option(options, prompt):
         except ValueError:
             print("Please enter a number.")
 
+def allocate_skill_points(skill, skill_points):
+    print(f"Allocate points for {skill} (Remaining points: {skill_points}): ")
+    while True:
+        try:
+            points = int(input())
+            if 0 <= points <= skill_points:
+                skill_points -= points
+                return points
+            else:
+                print(f"Invalid input. Please allocate within your remaining skill points ({skill_points}).")
+        except ValueError:
+            print("Please enter a number.")
+
+def determine_initial_attack(chosen_class):
+    class_attack_values = {
+        "Mage": 3,
+        "Warrior": 5,
+        "Rogue": 4,
+        "Ranger": 3,
+        "Paladin": 5,
+        "Monk": 4,
+        "Bard": 3,
+        "Cleric": 2,
+    }
+    return class_attack_values.get(chosen_class, 4)  # Default value
+
 def create_custom_character(database):
     print("\n--- Custom Character Creation ---")
     name = input("Enter your character's name: ")
 
     print("\nChoose a Class:")
     classes_choices = list(database.classEquipment.keys())
-    for i, class_choice in enumerate(classes_choices):
-        print(f"{i + 1}. {class_choice}")
     chosen_class = select_option(classes_choices, "Choose a Class:")
 
     print("\nChoose a Race:")
@@ -38,22 +62,13 @@ def create_custom_character(database):
     print(f"\nYou have {skill_points} skill points to allocate.")
     skills = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
     for skill in skills:
-        print(f"Allocate points for {skill} (Remaining points: {skill_points}): ")
-        points = 0
-        while True:
-            try:
-                points = int(input())
-                if 0 <= points <= skill_points:
-                    abilities[skill] = points
-                    skill_points -= points
-                    break
-                else:
-                    print(f"Invalid input. Please allocate within your remaining skill points ({skill_points}).")
-            except ValueError:
-                print("Please enter a number.")
+        abilities[skill] = allocate_skill_points(skill, skill_points)
 
-    custom_character = Character(name, chosen_race, chosen_class, 1, abilities, [], "Custom background", 20)
-    database.addCustomCharacter(name, chosen_race, chosen_class, 1, abilities, "Custom background", 20)
+    initial_attack = determine_initial_attack(chosen_class)
+
+    custom_character = Character(name, chosen_race, chosen_class, 1, abilities, [], "Custom background", 20, initial_attack)
+    database.addCustomCharacter(name, chosen_race, chosen_class, 1, abilities, "Custom background", 20, initial_attack)
+
     return custom_character
 
 def intro_and_character_choice():

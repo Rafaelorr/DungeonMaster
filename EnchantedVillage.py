@@ -1,8 +1,7 @@
-# EnchantedVillage.py
-
 from Combat import combat_round
 from Inventory import Inventory
 from skills import *
+from ItemDatabase import consumables  # Import consumables
 import random
 
 def enchanted_village_adventure(player_character, player_inventory):
@@ -15,9 +14,13 @@ def enchanted_village_adventure(player_character, player_inventory):
     choice = input("Your choice: ")
     if choice == '1':
         print("Inside the tower, you find a magical artifact and a note about a curse affecting the village.")
-        # Interaction with inventory
-        player_inventory.add_item('Magical Artifact')
-        print("Magical Artifact added to your inventory.")
+        # Assuming a similar approach for adding 'Magical Artifact'
+        magical_artifact = next((item for item in consumables if item.name == "Magical Artifact"), None)
+        if magical_artifact:
+            player_inventory.add_item(magical_artifact)
+            print("Magical Artifact added to your inventory.")
+        else:
+            print("No Magical Artifact found in the database.")
     else:
         print("Exploring the village, you stumble upon a hidden path leading to the outskirts.")
 
@@ -28,8 +31,12 @@ def enchanted_village_adventure(player_character, player_inventory):
     choice = input("Your choice: ")
     if choice == '1':
         print("You use your skills to heal the villager, who thanks you and gives you a potion.")
-        player_inventory.add_item('Healing Potion')
-        print("Healing Potion added to your inventory.")
+        healing_potion = next((item for item in consumables if item.name == "Healing Potion"), None)
+        if healing_potion:
+            player_inventory.add_item(healing_potion)
+            print("Healing Potion added to your inventory.")
+        else:
+            print("No Healing Potion found in the database.")
     else:
         print("Braving the dark forest, you find yourself surrounded by ominous shadows.")
 
@@ -38,7 +45,13 @@ def enchanted_village_adventure(player_character, player_inventory):
     enemy = {"name": "Shadow Creature", "hp": 15, "attack": 3, "defense": 2, "experience_value": 20}
     combat_round(player_character, enemy)
     print("After the battle, you find a mysterious rune on one of the defeated creatures.")
-    player_inventory.add_item('Mysterious Rune')
+    # Assuming similar approach for adding 'Mysterious Rune'
+    mysterious_rune = next((item for item in consumables if item.name == "Mysterious Rune"), None)
+    if mysterious_rune:
+        player_inventory.add_item(mysterious_rune)
+        print("Mysterious Rune added to your inventory.")
+    else:
+        print("No Mysterious Rune found in the database.")
 
     # Story point 4
     print("\nYou discover a secret chamber underneath the village square.")
@@ -47,7 +60,13 @@ def enchanted_village_adventure(player_character, player_inventory):
     choice = input("Your choice: ")
     if choice == '1':
         print("In the chamber, you find ancient scrolls detailing a forgotten ritual.")
-        player_inventory.add_item('Ancient Scrolls')
+        # Assuming similar approach for adding 'Ancient Scrolls'
+        ancient_scrolls = next((item for item in consumables if item.name == "Ancient Scrolls"), None)
+        if ancient_scrolls:
+            player_inventory.add_item(ancient_scrolls)
+            print("Ancient Scrolls added to your inventory.")
+        else:
+            print("No Ancient Scrolls found in the database.")
     else:
         print("You gather the villagers and form a plan to protect the village.")
 
