@@ -24,8 +24,7 @@ def allocate_skill_points(skill, skill_points):
         try:
             points = int(input())
             if 0 <= points <= skill_points:
-                skill_points -= points
-                return points
+                return points  # Just return the allocated points
             else:
                 print(f"Invalid input. Please allocate within your remaining skill points ({skill_points}).")
         except ValueError:
@@ -48,26 +47,27 @@ def create_custom_character(database):
     print("\n--- Custom Character Creation ---")
     name = input("Enter your character's name: ")
 
-    print("\nChoose a Class:")
+    # Choosing a class
     classes_choices = list(database.classEquipment.keys())
     chosen_class = select_option(classes_choices, "Choose a Class:")
 
-    print("\nChoose a Race:")
+    # Choosing a race
     races_choices = ["Human", "Elf", "Dwarf", "Halfling", "Orc", "Gnome", "Dragonborn", "Tiefling"]
     chosen_race = select_option(races_choices, "Choose a Race:")
 
+    # Allocating skill points
     abilities = {}
-    skill_points = 10
-    print(f"\nYou have {skill_points} skill points to allocate.")
+    skill_points = 12
     skills = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
     for skill in skills:
-        abilities[skill] = allocate_skill_points(skill, skill_points)
+        points = allocate_skill_points(skill, skill_points)
+        abilities[skill] = points
+        skill_points -= points
 
-    initial_attack = determine_initial_attack(chosen_class)
-
-    custom_character = Character(name, chosen_race, chosen_class, 1, abilities, [], "Custom background", 20, initial_attack)
-    database.addCustomCharacter(name, chosen_race, chosen_class, 1, abilities, "Custom background", 20, initial_attack)
-
+    # Creating the character
+    attack_value = determine_initial_attack(chosen_class)
+    custom_character = Character(name, chosen_race, chosen_class, 1, abilities, [], "Custom background", 20, attack_value)
+    database.addCustomCharacter(name, chosen_race, chosen_class, 1, abilities, "Custom background", 20, attack_value)
     return custom_character
 
 def intro_and_character_choice():
