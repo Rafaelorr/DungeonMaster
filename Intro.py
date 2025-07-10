@@ -1,11 +1,12 @@
-# Intro.py
-
 from CharacterDatabase import Database, Character
 
+# Creating an instance of the character database
 db = Database()
 
+# Function to display a list of options and prompt the user to select one
 def select_option(options, prompt):
     print("\n" + prompt)
+    # Enumerate and display all available options
     for i, option in enumerate(options, 1):
         print(f"{i}. {option}")
     while True:
@@ -18,18 +19,21 @@ def select_option(options, prompt):
         except ValueError:
             print("Please enter a number.")
 
+# Function to allocate skill points to a specific skill
 def allocate_skill_points(skill, skill_points):
     print(f"Allocate points for {skill} (Remaining points: {skill_points}): ")
     while True:
         try:
+            # Ask user to allocate points for the current skill
             points = int(input())
             if 0 <= points <= skill_points:
-                return points  # Just return the allocated points
+                return points
             else:
                 print(f"Invalid input. Please allocate within your remaining skill points ({skill_points}).")
         except ValueError:
             print("Please enter a number.")
 
+# Function to determine the initial attack value based on character class
 def determine_initial_attack(chosen_class):
     class_attack_values = {
         "Mage": 3,
@@ -41,21 +45,19 @@ def determine_initial_attack(chosen_class):
         "Bard": 3,
         "Cleric": 2,
     }
-    return class_attack_values.get(chosen_class, 4)  # Default value
+    return class_attack_values.get(chosen_class, 4)
 
 def create_custom_character(database):
     print("\n--- Custom Character Creation ---")
     name = input("Enter your character's name: ")
 
-    # Choosing a class
     classes_choices = list(database.classEquipment.keys())
     chosen_class = select_option(classes_choices, "Choose a Class:")
 
-    # Choosing a race
     races_choices = ["Human", "Elf", "Dwarf", "Halfling", "Orc", "Gnome", "Dragonborn", "Tiefling"]
     chosen_race = select_option(races_choices, "Choose a Race:")
 
-    # Allocating skill points
+    # Allocate ability points among six skills
     abilities = {}
     skill_points = 12
     skills = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
@@ -64,10 +66,33 @@ def create_custom_character(database):
         abilities[skill] = points
         skill_points -= points
 
-    # Creating the character
     attack_value = determine_initial_attack(chosen_class)
-    custom_character = Character(name, chosen_race, chosen_class, 1, abilities, [], "Custom background", 20, attack_value)
-    database.addCustomCharacter(name, chosen_race, chosen_class, 1, abilities, "Custom background", 20, attack_value)
+
+    # Create the character object
+    custom_character = Character(
+        name,
+        chosen_race,
+        chosen_class,
+        1,  # Starting level
+        abilities,
+        [],  # Empty inventory
+        "Custom background",
+        20,  # Starting health
+        attack_value
+    )
+
+    # Add the character to the database
+    database.addCustomCharacter(
+        name,
+        chosen_race,
+        chosen_class,
+        1,
+        abilities,
+        "Custom background",
+        20,
+        attack_value
+    )
+
     return custom_character
 
 def intro_and_character_choice():
