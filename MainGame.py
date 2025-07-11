@@ -1,5 +1,3 @@
-#MainGame.py
-
 from Intro import intro_and_character_choice
 from Inventory import Inventory
 from EnchantedVillage import enchanted_village_adventure

@@ -1,6 +1,4 @@
-#skills.py
-
-
+from random import randint
 # Warrior Skills
 
 def charge(player, enemy):
@@ -428,7 +426,7 @@ def attack(player, enemy):
     return f"{player['name']} attacks {enemy['name']} with {player['weapon']['name']} for {damage} damage!"
 
 def dodge(player):
-    roll = roll_d20() + player['agility_modifier']
+    roll = randint(1,20) + player['agility_modifier']
     if roll >= 10:
         player['dodging'] = True
         return f"{player['name']} successfully dodged the next attack!"

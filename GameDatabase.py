@@ -1,5 +1,3 @@
-#GameDatabase.py
-
 # Each class will have a list of skills and spells that unlock at each level up to level 10.
 
 game_database_python_extended = {
@@ -208,7 +206,7 @@ skill_descriptions = {
     "Inner Peace": "Find inner peace, rapidly regenerating HP and Mana for a short time.",
     "Roundhouse Kick": "Perform a roundhouse kick, hitting multiple enemies.",
     "Requiem": "Play a haunting melody, putting enemies to sleep.",
-    "Charm": "Charm an enemy, making them fight for you for a short time."
+    "Charm": "Charm an enemy, making them fight for you for a short time.",
     "Blinding Light": "Emit a flash of light, blinding enemies and reducing their accuracy.",
     "Summon Familiar": "Summon a small creature to assist you in various ways.",
     "Spectral Blade": "Conjure a blade of spectral energy, bypassing enemy armor.",
@@ -232,7 +230,7 @@ skill_descriptions = {
     "Zen Mastery": "Achieve the pinnacle of Zen mastery, making all your skills more potent.",
     "Fist of the Heavens": "Summon a giant fist from the heavens to smash your enemies.",
     "Epic Ballad": "Perform an epic ballad that grants a powerful buff to all party members.",
-    "Soul Swap": "Swap positions with an ally or enemy, taking on their status effects as well."
+    "Soul Swap": "Swap positions with an ally or enemy, taking on their status effects as well.",
     "Time Warp": "Manipulate time to take an extra turn.",
     "Summon Undead": "Summon an undead minion to aid you in battle.",
     "Gale Force": "Summon a powerful wind that pushes enemies back and disrupts their actions.",

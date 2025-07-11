@@ -1,9 +1,5 @@
-# AbandonedCastle.py
-
 from Combat import combat_round
-from Inventory import Inventory
 from skills import *
-import random
 
 def abandoned_castle_adventure(player_character, player_inventory):
     print("\nYour adventure takes you to the Abandoned Castle, once a mighty fortress now left to ruins and shrouded in mystery.")
@@ -36,11 +32,11 @@ def abandoned_castle_adventure(player_character, player_inventory):
     # Story point 3 - Puzzle interaction
     print("\nYou discover a room with a complex puzzle locking a chest.")
     # Add logic for puzzle mini-game UNFIN
-    if puzzle_solved:
-        print("Inside the chest, you find a legendary weapon.")
-        player_inventory.add_item('Legendary Weapon')
-    else:
-        print("Unable to solve the puzzle, you leave the room.")
+    # if puzzle_solved:
+    #     print("Inside the chest, you find a legendary weapon.")
+    #     player_inventory.add_item('Legendary Weapon')
+    # else:
+    #     print("Unable to solve the puzzle, you leave the room.")
 
     # Story point 4
     print("\nIn the throne room, you encounter a ghostly figure on the throne.")
