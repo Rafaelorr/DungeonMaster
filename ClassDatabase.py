@@ -1,5 +1,3 @@
-#ClassDatabase.py
-
 # Each class will have a list of skills and spells that unlock at each level up to level 10.
 
 game_database_python_extended = {

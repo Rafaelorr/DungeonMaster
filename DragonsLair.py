@@ -1,5 +1,3 @@
-# DragonsLair.py
-
 from Combat import combat_round
 from Inventory import Inventory
 from skills import *
