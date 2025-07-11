@@ -1,4 +1,4 @@
-from ItemDatabase import item_database, Consumable, Weapon, Armor, randomItems
+from ItemDatabase import item_database, Consumable, Weapon, Armor, randomItems, consumables
 
 class Inventory:
     def __init__(self):
@@ -17,6 +17,7 @@ class Inventory:
             else:
                 self.items[item_name] = {'item': item, 'quantity': 1}
             print(f"{item_name} added to your inventory.")
+            return
 
         # Search through item database
         for category in item_database.values():
@@ -28,6 +29,12 @@ class Inventory:
 
         # Search through random items list
         for item in randomItems:
+            if item.name == item_name:
+                add(item)
+                return
+
+        # Search through consumables list
+        for item in consumables:
             if item.name == item_name:
                 add(item)
                 return
