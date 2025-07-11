@@ -1,5 +1,3 @@
-#Combat.py
-
 import random
 
 def roll_dice(sides=6):
@@ -7,12 +5,13 @@ def roll_dice(sides=6):
 
 def calculate_attack_damage(attack):
     damage = roll_dice() + attack
-    return max(damage, 0)
+    return max(damage, 0)  # Ensure damage is not negative
 
 def gain_experience(player, experience):
-    #Implement XP system UNFIN
+    # Implement XP system here
     pass
 
+# Executes one round of combat between the player and an enemy
 def combat_round(player, enemy):
     player_damage = calculate_attack_damage(player.attack)
     enemy_damage = calculate_attack_damage(enemy['attack'])
@@ -20,6 +19,7 @@ def combat_round(player, enemy):
     enemy['hp'] -= player_damage
     player.currentHp -= enemy_damage
 
+    # Report damage results
     print(f"{player.name} deals {player_damage} damage to {enemy['name']}.")
     print(f"{enemy['name']} deals {enemy_damage} damage to {player.name}.")
 
@@ -29,5 +29,5 @@ def combat_round(player, enemy):
 
     if player.currentHp <= 0:
         print("Game Over.")
-        # Implement the load game function UNFIN
-
+        # Load game or retry mechanism can be implemented here
+        # (to be completed)
