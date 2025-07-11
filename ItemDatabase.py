@@ -228,7 +228,10 @@ randomItems = [
     GenericItem("Magical Artifact","A paper scroll imbued with magic.","Common",0),
     GenericItem("Mysterious Rune", "A mysterious rune ","Common",0),
     GenericItem("Ancient Scrolls", "A collection of scrolls from the ancient past","Common",0),
-    GenericItem("Mystical Amulet","A small mysterious amulet with a small amber stone","Common",0)
+    GenericItem("Mystical Amulet","A small mysterious amulet with a small amber stone","Common",0),
+    GenericItem("Ancient Scroll","A scroll with ancient writing","Common",0),
+    GenericItem("Rare Artifact","A rare magical trinket","Common",0),
+    GenericItem("Hero's Medallion","A medallion from an ancient hero","Common",0)
 ]
 
 def generateRandomItem():

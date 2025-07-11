@@ -12,7 +12,6 @@ def ancient_ruins_adventure(player_character, player_inventory):
     if choice == '1':
         print("The carvings reveal the history of an ancient civilization and a hidden compartment opens up, revealing a magical scroll.")
         player_inventory.add_item('Ancient Scroll')
-        print("Ancient Scroll added to your inventory.")
     else:
         print("You avoid the carvings, but stumble upon a hidden underground passage.")
 
@@ -42,7 +41,7 @@ def ancient_ruins_adventure(player_character, player_inventory):
         print("Your search reveals a hidden lever, opening a secret room filled with ancient weaponry.")
     else:
         print("You pay your respects. As you leave, a hidden compartment opens, revealing a hero's medallion.")
-        player_inventory.add_item('Hero\'s Medallion')
+        player_inventory.add_item("Hero's Medallion")
 
     # Story point 5
     print("\nIn the deepest part of the ruins, you find a sealed tomb.")
