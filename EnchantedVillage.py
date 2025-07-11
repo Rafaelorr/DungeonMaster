@@ -1,8 +1,6 @@
 from Combat import combat_round
-from Inventory import Inventory
 from skills import *
 from ItemDatabase import consumables  # Import consumables
-import random
 
 def enchanted_village_adventure(player_character, player_inventory):
     print("You arrive at the Enchanted Village, shrouded in an eerie silence. The once vibrant streets are now desolate.")

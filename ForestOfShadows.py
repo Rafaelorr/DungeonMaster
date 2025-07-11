@@ -1,7 +1,5 @@
 from Combat import combat_round
-from Inventory import Inventory
 from skills import *
-import random
 
 def forest_of_shadows_adventure(player_character, player_inventory):
     print("\nYour journey leads you to the mysterious Forest of Shadows, known for its magical aura and hidden dangers.")

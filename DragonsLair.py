@@ -1,7 +1,5 @@
 from Combat import combat_round
-from Inventory import Inventory
 from skills import *
-import random
 
 def dragons_lair_adventure(player_character, player_inventory):
     print("\nYou arrive at the foreboding entrance of the Dragon's Lair. A sense of dread and excitement fills the air.")

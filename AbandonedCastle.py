@@ -1,7 +1,5 @@
 from Combat import combat_round
-from Inventory import Inventory
 from skills import *
-import random
 
 def abandoned_castle_adventure(player_character, player_inventory):
     print("\nYour adventure takes you to the Abandoned Castle, once a mighty fortress now left to ruins and shrouded in mystery.")

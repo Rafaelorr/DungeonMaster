@@ -1,7 +1,5 @@
 from Combat import combat_round
-from Inventory import Inventory
 from skills import *
-import random
 
 def mystical_caverns_adventure(player_character, player_inventory):
     print("Having saved the Enchanted Village, you now find yourself at the entrance of the Mystical Caverns, rumored to be filled with ancient magic and hidden dangers.")
