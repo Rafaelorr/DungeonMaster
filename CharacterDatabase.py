@@ -1,16 +1,15 @@
-#CharacterDatabase.py
-
+# Represents a player character in the game
 class Character:
     def __init__(self, name, race, charClass, level, abilities, equipment, background, maxHp, attack):
         self.name = name
         self.race = race
         self.charClass = charClass
         self.level = level
-        self.abilities = abilities
-        self.equipment = equipment
+        self.abilities = abilities  # Dictionary of skills or powers
+        self.equipment = equipment  # List of equipped items
         self.background = background
         self.maxHp = maxHp
-        self.currentHp = maxHp
+        self.currentHp = maxHp  # starts full
         self.attack = attack
 
     def levelUp(self):
@@ -23,6 +22,7 @@ class Character:
         else:
             print(f"{self.name} has leveled up to level {self.level}.")
 
+    # Unlocks a new skill based on class and current level
     def unlockSkill(self):
         class_skills = {
             "Warrior": {1: "Charge", 2: "Defend", 3: "ShieldBash", 4: "Cleave", 5: "Fortify", 6: "Whirlwind", 7: "StoneSkin", 8: "BladeDance"},
@@ -35,10 +35,12 @@ class Character:
             "Ranger": {1: "BowShot", 2: "FindPath", 3: "Snipe", 4: "AnimalCompanion", 5: "QuickShot", 6: "Camouflage", 7: "Track", 8: "LongShot", 9: "AuraOfHealing", 10: "SummonFamiliar"}
         }
 
+        # Get the skills available for this character's class
         skills = class_skills.get(self.charClass, {})
+        # Try to unlock a skill for the current level
         new_skill = skills.get(self.level)
         if new_skill:
-            self.abilities[new_skill] = True
+            self.abilities[new_skill] = True  # Add to abilities
             return new_skill
         return None
 
@@ -49,6 +51,7 @@ class Character:
             self.equipment.append(item)
             print(f"{self.name} has equipped {item}.")
 
+    # Applies damage to the character, and handles defeat if HP reaches zero
     def takeDamage(self, damage):
         self.currentHp -= damage
         if self.currentHp <= 0:
@@ -57,17 +60,33 @@ class Character:
         else:
             print(f"{self.name} takes {damage} damage, current HP: {self.currentHp}/{self.maxHp}")
 
+    # Sets the starting equipment based on the character’s class
     def setStartingEquipment(self, classEquipment):
         self.equipment = classEquipment.get(self.charClass, [])
 
+    # Returns a deep copy of the character
     def copy(self):
-        return Character(self.name, self.race, self.charClass, self.level, self.abilities.copy(), self.equipment.copy(), self.background, self.maxHp, self.attack)
+        return Character(
+            self.name,
+            self.race,
+            self.charClass,
+            self.level,
+            self.abilities.copy(),
+            self.equipment.copy(),
+            self.background,
+            self.maxHp,
+            self.attack
+        )
 
 
+# Manages characters
 class Database:
     def __init__(self):
+        # Loads class-based equipment templates
         self.classEquipment = self.loadClassEquipment()
+        # Loads original predefined characters
         self.originalCharacters = self.loadOriginalCharacters()
+        # Creates a modifiable copy of each character
         self.currentCharacters = {name: char.copy() for name, char in self.originalCharacters.items()}
 
     def loadClassEquipment(self):
@@ -87,6 +106,7 @@ class Database:
             "Nameora": Character("Nameora", "Elf", "Ranger", 2, {}, [], "Skilled messenger...", 20, 5),
             "Saad Amina": Character("Saad Amina", "Human", "Rogue", 2, {}, [], "Resourceful herbalist...", 18, 5)
         }
+        # Assign starting equipment to each character
         for char in characters.values():
             char.setStartingEquipment(self.classEquipment)
         return characters
@@ -97,8 +117,10 @@ class Database:
         self.originalCharacters[name] = customCharacter
         self.currentCharacters[name] = customCharacter.copy()
 
+    # Retrieves the current version of a character
     def getCharacter(self, name):
         return self.currentCharacters.get(name)
 
+    # Resets all current characters to their original state
     def resetToOriginal(self):
         self.currentCharacters = {name: char.copy() for name, char in self.originalCharacters.items()}
