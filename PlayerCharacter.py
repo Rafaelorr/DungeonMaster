@@ -1,29 +1,30 @@
-#PlayerCharacter.py
-
 class Character:
     def __init__(self, name, race, charClass, level, abilities, equipment, background, maxHp, attack):
         self.name = name
         self.race = race
         self.charClass = charClass
         self.level = level
-        self.abilities = abilities  # Abilities are stored here
-        self.equipment = equipment
+        self.abilities = abilities  # Dictionary of unlocked skills
+        self.equipment = equipment  # List of equipped items
         self.background = background
         self.maxHp = maxHp
         self.currentHp = maxHp
         self.attack = attack
 
     def levelUp(self):
+        """Increase level, HP, and attack. Unlock a new skill if available."""
         self.level += 1
         self.maxHp += 2
         self.attack += 2
         new_skill = self.unlockSkill()
+
         if new_skill:
             print(f"{self.name} has leveled up to level {self.level}! New skill unlocked: {new_skill}")
         else:
             print(f"{self.name} has leveled up to level {self.level}.")
 
     def unlockSkill(self):
+        """Unlock a new skill for the character's class if available at the current level."""
         class_skills = {
             "Warrior": {1: "Charge", 2: "Defend", 3: "ShieldBash", 4: "Cleave", 5: "Fortify", 6: "Whirlwind", 7: "StoneSkin", 8: "BladeDance"},
             "Rogue": {1: "Stealth", 2: "Backstab", 3: "ShadowStrike", 4: "Ambush", 5: "Evasion", 6: "Assassinate", 7: "Vanish", 8: "Lacerate"},
@@ -37,12 +38,14 @@ class Character:
 
         skills = class_skills.get(self.charClass, {})
         new_skill = skills.get(self.level)
+
         if new_skill:
             self.abilities[new_skill] = True
             return new_skill
         return None
 
     def equipItem(self, item):
+        """Equip an item if it's not already equipped."""
         if item in self.equipment:
             print(f"{self.name} is already equipped with {item}.")
         else:
@@ -50,19 +53,28 @@ class Character:
             print(f"{self.name} has equipped {item}.")
 
     def takeDamage(self, damage):
-        self.currentHp -= damage
-        if self.currentHp <= 0:
-            self.currentHp = 0
+        """Apply damage to the character and update HP."""
+        self.currentHp = max(0, self.currentHp - damage)
+        if self.currentHp == 0:
             print(f"{self.name} has been defeated!")
         else:
             print(f"{self.name} takes {damage} damage, current HP: {self.currentHp}/{self.maxHp}")
 
     def setStartingEquipment(self, classEquipment):
+        """Set starting gear based on the character's class."""
         self.equipment = classEquipment.get(self.charClass, [])
 
     def copy(self):
-        return Character(self.name, self.race, self.charClass, self.level, self.abilities.copy(), self.equipment.copy(), self.background, self.maxHp, self.attack)
+        """Return a copy of the character instance."""
+        return Character(
+            self.name, self.race, self.charClass, self.level,
+            self.abilities.copy(), self.equipment.copy(), self.background,
+            self.maxHp, self.attack
+        )
 
+# -------------------------------
+# Game Database: Tracks Equipment and Characters
+# -------------------------------
 
 class Database:
     def __init__(self):
@@ -83,22 +95,28 @@ class Database:
         }
 
     def loadOriginalCharacters(self):
+        """Define original characters and set their gear."""
         characters = {
             "Nameora": Character("Nameora", "Elf", "Ranger", 2, {}, [], "Skilled messenger...", 20, 5),
             "Saad Amina": Character("Saad Amina", "Human", "Rogue", 2, {}, [], "Resourceful herbalist...", 18, 5)
         }
+
         for char in characters.values():
             char.setStartingEquipment(self.classEquipment)
+
         return characters
 
     def addCustomCharacter(self, name, race, charClass, level, abilities, background, maxHp, attack):
-        customCharacter = Character(name, race, charClass, level, abilities, [], background, maxHp, attack)
-        customCharacter.setStartingEquipment(self.classEquipment)
-        self.originalCharacters[name] = customCharacter
-        self.currentCharacters[name] = customCharacter.copy()
+        """Add a user-defined character and give them starting gear."""
+        new_char = Character(name, race, charClass, level, abilities, [], background, maxHp, attack)
+        new_char.setStartingEquipment(self.classEquipment)
+        self.originalCharacters[name] = new_char
+        self.currentCharacters[name] = new_char.copy()
 
     def getCharacter(self, name):
+        """Retrieve a current character instance by name."""
         return self.currentCharacters.get(name)
 
     def resetToOriginal(self):
+        """Reset current characters to their original state."""
         self.currentCharacters = {name: char.copy() for name, char in self.originalCharacters.items()}
