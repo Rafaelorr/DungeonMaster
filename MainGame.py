@@ -4,7 +4,6 @@ from EnchantedVillage import enchanted_village_adventure
 from MysticalCaverns import mystical_caverns_adventure
 from AncientRuins import ancient_ruins_adventure
 from AbandonedCastle import abandoned_castle_adventure
-from ForestOfShadows import forest_of_shadows_adventure
 from DragonsLair import dragons_lair_adventure
 
 def start_game():
@@ -35,10 +34,6 @@ def start_game():
 
         elif current_area == 'abandoned_castle':
             current_area = abandoned_castle_adventure(player_character, player_inventory)
-            print("\nYou approach the mysterious Cavern of Echoes.")
-
-        elif current_area == 'cavern_of_echoes':
-            current_area = forest_of_shadows_adventure(player_character, player_inventory)
             print("\nFinally, you face the Dragon's Lair.")
 
         elif current_area == 'dragons_lair':
