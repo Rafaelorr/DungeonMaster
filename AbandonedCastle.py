@@ -30,7 +30,7 @@ def abandoned_castle_adventure(player_character, player_inventory):
         player_inventory.add_item('Ancient Books')
 
     # Story point 3 - Puzzle interaction
-    print("\nYou discover a room with a complex puzzle locking a chest.")
+    # print("\nYou discover a room with a complex puzzle locking a chest.")
     # Add logic for puzzle mini-game UNFIN
     # if puzzle_solved:
     #     print("Inside the chest, you find a legendary weapon.")
