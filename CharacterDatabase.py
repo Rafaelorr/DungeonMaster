@@ -5,7 +5,7 @@ class Character:
         self.race = race
         self.charClass = charClass
         self.level = level
-        self.abilities = abilities  # Dictionary of skills or powers
+        self.abilities = abilities
         self.equipment = equipment  # List of equipped items
         self.background = background
         self.maxHp = maxHp

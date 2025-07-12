@@ -19,7 +19,6 @@ def select_option(options, prompt):
         except ValueError:
             print("Please enter a number.")
 
-# Function to allocate skill points to a specific skill
 def allocate_skill_points(skill, skill_points):
     print(f"Allocate points for {skill} (Remaining points: {skill_points}): ")
     while True:
@@ -33,7 +32,6 @@ def allocate_skill_points(skill, skill_points):
         except ValueError:
             print("Please enter a number.")
 
-# Function to determine the initial attack value based on character class
 def determine_initial_attack(chosen_class):
     class_attack_values = {
         "Mage": 3,
@@ -57,7 +55,6 @@ def create_custom_character(database):
     races_choices = ["Human", "Elf", "Dwarf", "Halfling", "Orc", "Gnome", "Dragonborn", "Tiefling"]
     chosen_race = select_option(races_choices, "Choose a Race:")
 
-    # Allocate ability points among six skills
     abilities = {}
     skill_points = 12
     skills = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]

@@ -4,7 +4,7 @@ class Character:
         self.race = race
         self.charClass = charClass
         self.level = level
-        self.abilities = abilities  # Dictionary of unlocked skills
+        self.abilities = abilities 
         self.equipment = equipment  # List of equipped items
         self.background = background
         self.maxHp = maxHp
@@ -118,5 +118,4 @@ class Database:
         return self.currentCharacters.get(name)
 
     def resetToOriginal(self):
-        """Reset current characters to their original state."""
         self.currentCharacters = {name: char.copy() for name, char in self.originalCharacters.items()}

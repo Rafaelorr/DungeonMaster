@@ -8,7 +8,7 @@ class Inventory:
 
     def add_item(self, item_name):
         """
-        Adds an item to the inventory by searching in the item database and random items list.
+        Adds an item to the inventory.
         """
         # Helper function to add item to inventory
         def add(item):
@@ -86,7 +86,7 @@ class Inventory:
 
     def __str__(self):
         """
-        Returns a readable string representation of the inventory.
+        Returns a readable string version of the inventory.
         """
         if not self.items:
             return "Inventory is empty."

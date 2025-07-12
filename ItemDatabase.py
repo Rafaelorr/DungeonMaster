@@ -237,7 +237,3 @@ randomItems = [
     GenericItem("Magical Telescope","A magical telescope that lets the user see invisible creature and objects","Common",0),
     GenericItem("Glowing Crystals","A handfull of sharp glowing crystals","Common",0)
 ]
-
-def generateRandomItem():
-    """Returns a random collectible item."""
-    return random.choice(randomItems)

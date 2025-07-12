@@ -13,7 +13,6 @@ def enchanted_village_adventure(player_character, player_inventory):
     if choice == '1':
         print("Inside the tower, you find a magical artifact and a note about a curse affecting the village.")
     
-        # Optional: check if it's in consumables
         magical_artifact = next((item for item in randomItems if item.name == "Magical Artifact"), None)
     
         if magical_artifact:
