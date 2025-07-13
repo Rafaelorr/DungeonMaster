@@ -4,7 +4,6 @@
 # Combat:  
 - Implement XP system  
 - Retry mechanism  
-- Stop the game on defeat  
 # Dragons Lair:  
 - Add logic to skip some story portion  
 - Add logic to take damage  
