@@ -5,7 +5,6 @@
 - Implement XP system  
 - Retry mechanism  
 # Dragons Lair:  
-- Add logic to skip some story portion  
 - Add logic to take damage  
 - Add logic for an intel check  
 # Mystical Caverns:

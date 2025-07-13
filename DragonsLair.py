@@ -20,22 +20,24 @@ def dragons_lair_adventure(player_character, player_inventory):
     print("1. Help the adventurer")
     print("2. Ask for information about the dragon")
     choice = input("Your choice: ")
+    adventurer_aid = False
     if choice == '1':
         print("After helping the adventurer, they share a secret passage that leads closer to the dragon.")
-        # Add logic to skip some story portion
+        adventurer_aid = True
     else:
         print("The adventurer shares valuable information about the dragon's weaknesses.")
 
     # Story point 3
-    print("\nYou find a chamber filled with treasure.")
-    print("1. Take some treasure")
-    print("2. Leave the treasure undisturbed")
-    choice = input("Your choice: ")
-    if choice == '1':
-        print("You collect some treasure, but it triggers a trap!")
-        # Add logic to take damage UNFIN
-    else:
-        print("You decide not to risk taking any treasure and proceed safely.")
+    if not adventurer_aid:
+        print("\nYou find a chamber filled with treasure.")
+        print("1. Take some treasure")
+        print("2. Leave the treasure undisturbed")
+        choice = input("Your choice: ")
+        if choice == '1':
+            print("You collect some treasure, but it triggers a trap!")
+            # Add logic to take damage UNFIN
+        else:
+            print("You decide not to risk taking any treasure and proceed safely.")
 
     # Story point 4
     print("\nYou finally come face-to-face with the dragon.")
