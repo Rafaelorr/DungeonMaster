@@ -28,6 +28,7 @@ def combat_round(player, enemy):
         gain_experience(player, enemy['experience_value'])
 
     if player.currentHp <= 0:
-        print("Game Over.")
+        print(f"Game Over. \n {player.name} died in combat.")
+        exit()
         # Load game or retry mechanism can be implemented here
         # (to be completed)
