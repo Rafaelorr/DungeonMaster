@@ -63,6 +63,16 @@ class Character:
     # Sets the starting equipment based on the character’s class
     def setStartingEquipment(self, classEquipment):
         self.equipment = classEquipment.get(self.charClass, [])
+    
+    def takeDamageByTraps(self, damage, source):
+        self.currentHp -= damage
+        if self.currentHp <= 0:
+            self.currentHp = 0
+            print("Game over.")
+            print(f"{self.name} has been defeated by {source}.")
+            exit()
+        else:
+            print(f"{self.name} takes {damage} damage from {source}, current HP: {self.currentHp}/{self.maxHp}")
 
     # Returns a deep copy of the character
     def copy(self):
