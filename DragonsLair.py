@@ -35,7 +35,7 @@ def dragons_lair_adventure(player_character, player_inventory):
         choice = input("Your choice: ")
         if choice == '1':
             print("You collect some treasure, but it triggers a trap!")
-            # Add logic to take damage UNFIN
+            player_character.takeDamageByTraps(3,"a trap")
         else:
             print("You decide not to risk taking any treasure and proceed safely.")
 
