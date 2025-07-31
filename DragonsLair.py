@@ -50,7 +50,13 @@ def dragons_lair_adventure(player_character, player_inventory):
         combat_round(player_character, enemy)
     else:
         print("You attempt to communicate with the dragon, discovering it is wise and ancient.")
-        # Add logic for intel check UNFIN
+
+        if player_character.skill_check("Intelligence", 12):
+            print("The dragon shares their ancient wisdom with you.")
+            print(f"{player_character.name}'s wisdom increases by 2")
+            player_character.abilities["Wisdom"] += 2
+        else:
+            print("The ancient words of the dragon are incomprehensible to you.")
 
     # Story point 5
     print("\nAfter your encounter with the dragon, you must decide your next move.")

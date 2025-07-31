@@ -4,7 +4,5 @@
 # Combat:  
 - Implement XP system  
 - Retry mechanism  
-# Dragons Lair:
-- Add logic for an intel check  
 # Mystical Caverns:
 - Add logic for a stat increase
