@@ -64,8 +64,10 @@ class Character:
         roll_result = randint(1,20) + self.abilities[skill]
 
         if roll_result >= dc:
+            print(f"{self.name} succesfully passed a {skill} check.")
             return True
 
+        print(f"{self.name} failed a {skill} check.")
         return False
 
     def equipItem(self, item):
