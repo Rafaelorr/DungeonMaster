@@ -1,3 +1,4 @@
+from random import randint
 # Represents a player character in the game
 class Character:
     def __init__(self, name, race, charClass, level, abilities, equipment, background, maxHp, attack):
@@ -44,6 +45,31 @@ class Character:
             return new_skill
         return None
 
+    def skill_check(self, skill:str, dc:int) -> bool:
+        """
+        Args:
+            skill :str = the skill that modifies the roll
+            dc :int = the difficulty of the check
+        
+        valid skills: Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
+
+        Returns:
+            passed :bool = if the skill check is passed
+        """
+        skills :tuple = ("Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma")
+
+        if not skill in skills:
+            raise ValueError(f"{skill} is not a valid skill.")
+
+        roll_result = randint(1,20) + self.abilities[skill]
+
+        if roll_result >= dc:
+            print(f"{self.name} succesfully passed a {skill} check.")
+            return True
+
+        print(f"{self.name} failed a {skill} check.")
+        return False
+
     def equipItem(self, item):
         if item in self.equipment:
             print(f"{self.name} is already equipped with {item}.")
@@ -63,6 +89,16 @@ class Character:
     # Sets the starting equipment based on the character’s class
     def setStartingEquipment(self, classEquipment):
         self.equipment = classEquipment.get(self.charClass, [])
+    
+    def takeDamageByTraps(self, damage, source):
+        self.currentHp -= damage
+        if self.currentHp <= 0:
+            self.currentHp = 0
+            print("Game over.")
+            print(f"{self.name} has been defeated by {source}.")
+            exit()
+        else:
+            print(f"{self.name} takes {damage} damage from {source}, current HP: {self.currentHp}/{self.maxHp}")
 
     # Returns a deep copy of the character
     def copy(self):
@@ -103,8 +139,8 @@ class Database:
 
     def loadOriginalCharacters(self):
         characters = {
-            "Nameora": Character("Nameora", "Elf", "Ranger", 2, {}, [], "Skilled messenger...", 20, 5),
-            "Saad Amina": Character("Saad Amina", "Human", "Rogue", 2, {}, [], "Resourceful herbalist...", 18, 5)
+            "Nameora": Character("Nameora", "Elf", "Ranger", 2, {"Strength":1, "Dexterity":6, "Constitution":1, "Intelligence":0, "Wisdom":4, "Charisma":0}, ["Longbow", "Arrows", "Leather Armor"], "Skilled messenger...", 20, 5),
+            "Saad Amina": Character("Saad Amina", "Human", "Rogue", 2, {"Strength":2, "Dexterity":7, "Constitution":2, "Intelligence":0, "Wisdom":1, "Charisma":0}, ["Daggers", "Leather Armor"], "Resourceful herbalist...", 18, 5)
         }
         # Assign starting equipment to each character
         for char in characters.values():
