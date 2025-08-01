@@ -4,5 +4,3 @@
 # Combat:  
 - Implement XP system  
 - Retry mechanism  
-# Mystical Caverns:
-- Add logic for a stat increase

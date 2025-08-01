@@ -42,7 +42,9 @@ def mystical_caverns_adventure(player_character, player_inventory):
     choice = input("Your choice: ")
     if choice == '1':
         print("The artifact grants you enhanced magical powers.")
-        # Add logic for increasing player stats UNFINISHED
+        player_character.abilities["Constitution"] += 1
+        player_character.abilities["Intelligence"] += 1
+        player_character.abilities["Wisdom"] += 1
     else:
         print("You respect the sanctity of the altar and leave the artifact.")
 
