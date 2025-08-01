@@ -15,7 +15,8 @@ def abandoned_castle_adventure(player_character, player_inventory):
         combat_round(player_character, enemy)
     else:
         print("The knight shares the tale of the castle and bestows a blessing upon you.")
-        # Add logic for a stat increase UNFIN
+        player_character.abilities["Constitution"] += 1
+        player_character.abilities["Dexterity"] += 1
 
     # Story point 2
     print("\nYou find a grand library filled with ancient books.")
@@ -24,7 +25,8 @@ def abandoned_castle_adventure(player_character, player_inventory):
     choice = input("Your choice: ")
     if choice == '1':
         print("You gain insights into ancient magic and lore.")
-        # Add logic for a stat increase
+        player_character.abilities["Wisdom"] += 1
+        player_character.abilities["Intelligence"] += 1
     else:
         print("You take some valuable books, which could be sold later.")
         player_inventory.add_item('Ancient Books')
