@@ -215,7 +215,8 @@ consumables = [
 # ---------- Random Items ----------
 
 randomItems = [
-    GenericItem("Ancient Coin", "An old coin from a forgotten kingdom.", "Common", 5),
+    GenericItem("Ancient Gold Coin", "An old coin from a forgotten kingdom.", "Uncommon", 10),
+    GenericItem("Rare Crystals", "A bunch of strange glowing crystals.", "Rare", 20),
     GenericItem("Mysterious Gemstone", "A gemstone emitting a faint glow.", "Uncommon", 15),
     GenericItem("Old Scroll", "A scroll with indecipherable text.", "Common", 10),
     GenericItem("Enchanted Amulet", "An amulet with a mysterious aura.", "Rare", 30),
@@ -225,15 +226,15 @@ randomItems = [
     GenericItem("Crystal Vial", "A vial made from pure crystal.", "Rare", 25),
     GenericItem("Ancient Manuscript", "A manuscript containing ancient knowledge.", "Epic", 60),
     GenericItem("Magic Stone", "A small stone imbued with magic.", "Common", 12),
-    GenericItem("Magical Artifact","A paper scroll imbued with magic.","Common",0),
-    GenericItem("Mysterious Rune", "A mysterious rune ","Common",0),
-    GenericItem("Ancient Scrolls", "A collection of scrolls from the ancient past","Common",0),
-    GenericItem("Mystical Amulet","A small mysterious amulet with a small amber stone","Common",0),
-    GenericItem("Ancient Scroll","A scroll with ancient writing","Common",0),
-    GenericItem("Rare Artifact","A rare magical trinket","Common",0),
-    GenericItem("Hero's Medallion","A medallion from an ancient hero","Common",0),
-    GenericItem("Ancient Books","A bunch of books from a grand ancient library","Common",100),
-    GenericItem("Royal Signet Ring","A signet ring of a long forgotten royal familly","Common",0),
-    GenericItem("Magical Telescope","A magical telescope that lets the user see invisible creature and objects","Common",0),
-    GenericItem("Glowing Crystals","A handfull of sharp glowing crystals","Common",0)
+    GenericItem("Magical Artifact", "A paper scroll imbued with magic.", "Common", 5),
+    GenericItem("Mysterious Rune", "A mysterious rune ", "Uncommon", 2),
+    GenericItem("Ancient Scrolls", "A collection of scrolls from the ancient past", "Rare", 50),
+    GenericItem("Mystical Amulet", "A small mysterious amulet with a small amber stone", "Common", 12),
+    GenericItem("Ancient Scroll", "A scroll with ancient writing", "Uncommon", 22),
+    GenericItem("Rare Artifact", "A rare magical trinket", "Epic", 55),
+    GenericItem("Hero's Medallion", "A medallion from an ancient hero", "Rare", 90),
+    GenericItem("Ancient Books", "A bunch of books from a grand ancient library", "Uncommon", 100),
+    GenericItem("Royal Signet Ring", "A signet ring of a long forgotten royal familly", "Rare", 50),
+    GenericItem("Magical Telescope", "A magical telescope that lets the user see invisible creature and objects", "Uncommon", 100),
+    GenericItem("Glowing Crystals", "A handfull of sharp glowing crystals", "Uncommon", 10)
 ]
