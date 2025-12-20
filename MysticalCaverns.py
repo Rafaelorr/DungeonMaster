@@ -11,8 +11,7 @@ def mystical_caverns_adventure(player_character, player_inventory):
     choice = input("Your choice: ")
     if choice == '1':
         print("The runes reveal the location of a hidden chamber filled with treasure.")
-        player_inventory.add_item('Ancient Coin')
-        print("Ancient Gold Coin added to your inventory.")
+        player_inventory.add_item('Ancient Gold Coin')
     else:
         print("You avoid the runes and find a hidden path leading further into the cavern.")
 
@@ -24,7 +23,6 @@ def mystical_caverns_adventure(player_character, player_inventory):
     if choice == '1':
         print("You lead them to safety and they reward you with a mystical amulet.")
         player_inventory.add_item('Mystical Amulet')
-        print("Mystical Amulet added to your inventory.")
     else:
         print("Exploring together, you come across a room filled with rare crystals.")
 
